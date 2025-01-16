@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ soldier["Name"] }}'s Story</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">Shahids' Stories</a>
+        </div>
+    </nav>
+
+    <!-- Story Content -->
+    <div class="container mt-5">
+        <h1 class="text-center">{{ soldier["Name"] }}</h1>
+        <p class="text-center text-muted">{{ soldier["Rank"] }}, {{ soldier["Unit/Regiment/Corps"] }}</p>
+
+        <div class="mt-4">
+            <h4>Story:</h4>
+            <p>{{ soldier["Story"] }}</p>
+        </div>
+        <div class="mt-4">
+            <h4>Citation:</h4>
+            <p>{{ soldier["Citation"] }}</p>
+        </div>
+        <div class="mt-4">
+            <h4>Memorial:</h4>
+            <p>{{ soldier["Memorial"] }}</p>
+        </div>
+
+        <a href="/" class="btn btn-primary mt-4">Back to Home</a>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>© 2024 Honoring the Brave | Created to honor our heroes</p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

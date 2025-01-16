@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Honoring the Brave</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">Shahids' Stories</a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container mt-5">
+        <h1 class="text-center">Honoring the Brave</h1>
+        <p class="text-center">Learn about the heroic sacrifices of our brave soldiers.</p>
+
+        <form method="POST" class="mt-4">
+            <div class="mb-3">
+                <label for="search" class="form-label">Search a Shahid</label>
+                <input type="text" class="form-control" id="search" name="search" placeholder="Enter a name" value="{{ search_query }}">
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Search</button>
+        </form>
+
+        {% if recommendations %}
+        <div class="mt-4">
+            <h4>Recommendations</h4>
+            <ul class="list-group">
+                {% for recommendation, score in recommendations %}
+                <li class="list-group-item">
+                    <a href="{{ url_for('story', name=recommendation) }}">{{ recommendation }}</a>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+
+        <hr class="mt-5">
+
+        <h4>Select a Shahid</h4>
+        <div class="dropdown mt-2">
+            <button class="btn btn-secondary dropdown-toggle w-100" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                Select a Shahid
+            </button>
+            <ul class="dropdown-menu w-100" aria-labelledby="dropdownMenuButton">
+                {% for name in names %}
+                <li><a class="dropdown-item" href="{{ url_for('story', name=name) }}">{{ name }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>© 2024 Honoring the Brave | Created to honor our heroes</p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
